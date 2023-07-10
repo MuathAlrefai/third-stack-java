@@ -1,5 +1,7 @@
 package mycafe;
 
+import java.util.Scanner;
+
 public class newOrder {
     public static void main(String[] args) {
         // Menu items
@@ -7,18 +9,19 @@ public class newOrder {
         // Application Simulations
         // Use this example code to test various orders' updates
         CoffeeKiosk cafe = new CoffeeKiosk();
-        cafe.addMenuItem("water", 5);
-        cafe.addMenuItem("coffee", 15);
+        cafe.addMenuItem("water", 2);
+        cafe.addMenuItem("coffee", 12.50);
         cafe.addMenuItem("cappuccino", 10);
-        cafe.addMenuItem("milkshake", 70);
-        cafe.addMenuItem("sandwich", 80);
-        cafe.addMenuItem("drink", 90);
+        cafe.addMenuItem("milkshake", 13.44);
+        cafe.addMenuItem("sandwich", 8.99);
+        cafe.addMenuItem("drink", 6.99);
 
         // Shows the user a message prompt and then sets their input to a variable, name
+        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Please enter your name:");
-        String orderName = System.console().readLine();
-        Order order1 = new Order(orderName);
-
+        String userName = scanner.nextLine();
+        Order order1 = new Order(userName);
+        
         cafe.displayMenu();
 
         // Prompts the user to enter an item number
@@ -26,11 +29,11 @@ public class newOrder {
 
         // Write a while loop to collect all user's order items
         while (!itemNumber.equals("q")) {
-            System.out.println("Please enter a menu item index or q to quit:");
-            itemNumber = System.console().readLine();
-            if (itemNumber.equals("q"))
+            System.out.println("Please enter an item index or press q to quit:");
+            String itemNumber1 = scanner.nextLine();
+            if (itemNumber1.equals("q"))
                 break;
-            int newitem = Integer.parseInt(itemNumber);
+            int newitem = Integer.parseInt(itemNumber1);
             order1.addItem(cafe.getMenu().get(newitem));
             // Get the item object from the menu, and add the item to the order
             // Ask them to enter a new item index or q again, and take their input
