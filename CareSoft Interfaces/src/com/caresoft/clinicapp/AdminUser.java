@@ -9,9 +9,41 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
     private ArrayList<String> securityIncidents;
     
     // TO DO: Implement a constructor that takes an ID and a role
+    public AdminUser(int ID, String role) {
+    	this.id = ID;
+    	this.role = role;
+    }
     // TO DO: Implement HIPAACompliantUser!
+    @Override
+	public boolean assignPin(int pin) {
+		String pinString = String.valueOf(pin);
+		if (pinString.length() == 6) {
+			return true;
+		}
+		else {
+		return false;
+		}
+	}
+
+	@Override
+	public boolean accessAuthorized(Integer confirmedAuthID) {
+		
+		if(this.id == confirmedAuthID) {
+			return true;
+		}
+		else {
+			this.authIncident();
+			return false;
+		}
+	}
     // TO DO: Implement HIPAACompliantAdmin!
-    
+	@Override
+	public ArrayList<String> reportSecurityIncidents() {
+		
+		securityIncidents.addAll(getSecurityIncidents());
+		return securityIncidents;
+	}
+	
     public void newIncident(String notes) {
         String report = String.format(
             "Datetime Submitted: %s \n,  Reported By ID: %s\n Notes: %s \n", 
@@ -26,6 +58,30 @@ public class AdminUser extends User implements HIPAACompliantUser, HIPAAComplian
         );
         securityIncidents.add(report);
     }
-    
+
+	
     // TO DO: Setters & Getters
+    public Integer getEmployeeID() {
+		return employeeID;
+	}
+
+	public void setEmployeeID(Integer employeeID) {
+		this.employeeID = employeeID;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public ArrayList<String> getSecurityIncidents() {
+		return securityIncidents;
+	}
+
+	public void setSecurityIncidents(ArrayList<String> securityIncidents) {
+		this.securityIncidents = securityIncidents;
+	}
 }
