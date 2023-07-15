@@ -39,7 +39,7 @@ public class GoldController {
                 int count = (int) session.getAttribute("gold");
                 session.setAttribute("gold", count + randGold);
 
-                String message = "You entered a Farm and earned " + randGold + " gold. (" + actionDate + ")";
+                String message = "You worked at a Farm and earned " + randGold + " gold. (" + actionDate + ")";
                 @SuppressWarnings("unchecked")
                 ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
                 messages.add(0, message);
@@ -73,13 +73,13 @@ public class GoldController {
                 session.setAttribute("gold", count + randGold);
 
                 if (randGold > 0) {
-                    String message = "You entered a Quest and earned " + randGold + " gold. (" + actionDate + ")";
+                    String message = "You finished a Quest and earned " + randGold + " gold. (" + actionDate + ")";
                     @SuppressWarnings("unchecked")
                     ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
                     messages.add(0, message);
                     session.setAttribute("messages", messages);
                 } else {
-                    String message = "You failed a Quest and lost " + randGold + " gold. Ouch! (" + actionDate + ")";
+                    String message = "You failed a Quest and lost " + (randGold * -1) + " gold. Ouch! (" + actionDate + ")";
                     @SuppressWarnings("unchecked")
                     ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
                     messages.add(0, message);

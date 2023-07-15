@@ -32,7 +32,7 @@
         <div class="box">
             <form action="/earn" method="POST">
                 <h2>Cave</h2>
-                <p>earns 10-20 gold</p><br>
+                <p>earns 5-10 gold</p><br>
                 <input type="hidden" name="earn" value="cave">
                 <input type="submit" value="Find Gold" class="btn">
             </form>
@@ -40,7 +40,7 @@
         <div class="box">
             <form action="/earn" method="POST">
                 <h2>House</h2>
-                <p>earns 10-20 gold</p><br>
+                <p>earns 2-5 gold</p><br>
                 <input type="hidden" name="earn" value="house">
                 <input type="submit" value="Find Gold" class="btn">
             </form>
@@ -56,11 +56,14 @@
     </div>
     <div class="footer"><br>
         <h2>Activities:</h2>
-        <textarea cols="140" rows="10" disabled style="text-align: center;">
             <c:forEach var="message" items="${messages}">
-                <c:out value="${message}"/>
+                <c:if test="${message.contains('earned')}">
+                    <p style="color: springgreen;"><c:out value="${message}"/></p>
+                </c:if>
+                <c:if test="${message.contains('lost')}">
+                    <p style="color: indianred"><c:out value="${message}"/></p>
+                </c:if>
             </c:forEach>
-        </textarea>
     </div>
 </body>
 </html>
