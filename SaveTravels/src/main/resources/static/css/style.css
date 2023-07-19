@@ -18,3 +18,11 @@ form > .label {
     text-decoration: none;
     border: none;
 }
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.goBack, .expenseH1 {
+    text-decoration: none;
+    color: cornflowerblue;
+}

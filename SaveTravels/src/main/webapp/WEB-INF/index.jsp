@@ -35,7 +35,7 @@
         <tr>
             <c:forEach var="expense" items="${expenses}">
         <tr>
-            <td><c:out value="${expense.name}"/></td>
+            <td><a href="/expenses/${expense.id}"><c:out value="${expense.name}"/></a></td>
             <td><c:out value="${expense.vendor}"/></td>
             <td>$<c:out value="${expense.amount}"/></td>
             <td>
