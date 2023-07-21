@@ -37,7 +37,7 @@
 <hr>
 
 <form action="/addCategoryToProduct/${id}" method="post">
-    <label>Add Product:</label>
+    <label>Add Category:</label>
     <select name="categoryId">
         <c:forEach var="category" items="${unassignedCategories}">
             <option value="${category.id}">${category.name}</option>
